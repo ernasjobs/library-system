@@ -1,11 +1,12 @@
 using System;
 using System.Threading;
+using System.Collections.Generic;
 namespace library_system
 {
     public class App
     {
             BookManagement bookManagement=new BookManagement();
-            
+            List<Author> authorList=new List<Author>();
         public void Run()
         { 
             
@@ -81,10 +82,18 @@ namespace library_system
                         string selectedCategory=bookManagement.FictionBookGenres[selectedCategoryID];
                         Console.WriteLine("You have selected {0}",selectedCategory);
                         string title=Input("Title");
-                        string author=Input("Author");
+                        Console.WriteLine("Number of Authors:");
+                        int noAuthors=Convert.ToInt32(Console.ReadLine());
+                        for(int i=0;i<noAuthors;i++)
+                        {
+                            string authorName=Input("Author");
+                            Author author=new Author(authorName);
+                            authorList.Add(author);
+                        }
+                        
                         string publisher=Input("Plublisher");
                         string dateOfPublication=Input("Date of publication");
-                        FictionBook fictionBook=new FictionBook(BookClass.Fiction,title,author,publisher,dateOfPublication);
+                        FictionBook fictionBook=new FictionBook(BookClass.Fiction,title,authorList,publisher,dateOfPublication);
                         bookManagement.AddBook(fictionBook);
                         string another=Input("Add another? y/n");
                         if(another=="n")
@@ -133,10 +142,17 @@ namespace library_system
                         string selectedCategory=bookManagement.NonFictionBookCategories[selectedCategoryID];
                         Console.WriteLine("You have selected {0}",selectedCategory);
                         string title=Input("Title");
-                        string author=Input("Author");
+                        Console.WriteLine("Number of Authors");
+                        int noAuthors=Convert.ToInt32(Console.ReadLine());
+                        for(int i=0;i<noAuthors;i++)
+                        {
+                            string authorName=Input("Author");
+                            Author author=new Author(authorName);
+                            authorList.Add(author);
+                        }
                         string publisher=Input("Plublisher");
                         string dateOfPublication=Input("Date of publication");
-                        NonFictionBook nonfictionBook=new NonFictionBook(BookClass.Fiction,title,author,publisher,dateOfPublication);
+                        NonFictionBook nonfictionBook=new NonFictionBook(BookClass.Fiction,title,authorList,publisher,dateOfPublication);
                         bookManagement.AddBook(nonfictionBook);
                         string another=Input("Add another? y/n");
                         if(another=="n")

@@ -8,10 +8,10 @@ namespace library_system
         private readonly BookClass bookClass;
         public string ID {get;set;}
         public string Title {get;set;}
-        public string Author {get;set;}
+        public  List<Author> Author {get;set;}
         public string Publisher {get;set;}
         public string DateOfPublication {get;set;}
-        public Book(BookClass bookClass,string title,string author,string publisher,string dataOfPublication)
+        public Book(BookClass bookClass,string title,List<Author> author,string publisher,string dataOfPublication)
         {
             this.bookClass=bookClass;
             Title=title;
@@ -22,8 +22,12 @@ namespace library_system
             
         }
         public virtual void DisplayDetails()
-        {
-            Console.WriteLine(ID+", "+Author +", "+Title+", "+Publisher+", "+DateOfPublication);
+        {   string authorList="";
+            foreach(var author in Author)
+            {
+                authorList+=author.Name +", ";
+            }
+            Console.WriteLine(ID+", "+authorList +", "+Title+", "+Publisher+", "+DateOfPublication);
         }
 
     }
