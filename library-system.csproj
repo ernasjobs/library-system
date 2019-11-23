@@ -5,5 +5,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>library_system</RootNamespace>
   </PropertyGroup>
-
+ <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
 </Project>
