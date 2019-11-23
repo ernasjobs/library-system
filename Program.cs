@@ -6,7 +6,10 @@ namespace library_system
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+         //  UserInputManagement userInputManagement=new UserInputManagement();
+          // userInputManagement.Run();
+          App app=new App();
+          app.Run();
         }
     }
 }
